@@ -1,5 +1,5 @@
 plugins {
-    id 'java-library'
+    id 'java'
     id 'maven-publish'
 }
 
@@ -10,14 +10,14 @@ sourceCompatibility = "11"
 
 repositories {
     mavenLocal {
-        name 'mavenLocal'
-        url 'd://xzmeasy/repository'
+        name 'maven local'
+        url 'd://xzmeasy/Repository'
     }
     mavenCentral()
 }
 
 dependencies {
-    implementation 'org.qiniu:qiniu-spring-boot-autoconfigure:0.1.0'
+    compile 'org.qiniu:qiniu-spring-boot-autoconfigure:0.1.0'
 }
 
 java {
@@ -31,13 +31,18 @@ publishing {
             groupId = group
             artifactId = rootProject.name
             version = version
+            pom {
+                name = 'qiniu-spring-boot'
+                description = 'qiniu spring boot pom'
+                url = 'd://xzmeasy/Repository'
+            }
             from components.java
         }
     }
     repositories {
         maven {
             name = 'mavenLocal'
-            url = 'd://xzmeasy/repository'
+            url = 'd://xzmeasy/Repository'
         }
     }
 }
